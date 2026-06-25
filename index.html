@@ -31,9 +31,6 @@
   /* ===== Light sky + soft moon + Fuji ===== */
   .sky{position:fixed;inset:0;z-index:-2;
     background:linear-gradient(180deg,#eaf3fb 0%, var(--bg) 55%, #f5efe3 100%);}
-  .moon{position:fixed;top:7%;right:11%;width:96px;height:96px;z-index:-2;
-    filter:drop-shadow(0 0 30px rgba(255,210,110,.7))}
-  .moon svg{display:block;width:100%;height:auto}
   .fuji{position:fixed;left:0;right:0;bottom:0;z-index:-2;width:100%;opacity:.85}
   .fuji svg{display:block;width:100%;height:auto}
 
@@ -114,64 +111,12 @@
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-  @media(max-width:640px){.node{width:100%;max-width:330px}.row{gap:16px}.moon{width:72px;height:72px;top:5%;right:7%}}
+  @media(max-width:640px){.node{width:100%;max-width:330px}.row{gap:16px}}
 </style>
 </head>
 <body>
 
 <div class="sky"></div>
-<div class="moon">
-  <svg viewBox="0 0 200 200" aria-hidden="true">
-    <defs>
-      <radialGradient id="moonBody" cx="42%" cy="38%" r="68%">
-        <stop offset="0%" stop-color="#fff6cf"/>
-        <stop offset="55%" stop-color="#ffe49a"/>
-        <stop offset="100%" stop-color="#fbcf5f"/>
-      </radialGradient>
-      <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-        <feGaussianBlur stdDeviation="3.4"/>
-      </filter>
-      <!-- fine surface grain for realism -->
-      <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" seed="17" result="n"/>
-        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0"/>
-        <feComponentTransfer><feFuncA type="linear" slope="0.5" intercept="0"/></feComponentTransfer>
-      </filter>
-      <radialGradient id="limb" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
-        <stop offset="78%" stop-color="rgba(0,0,0,0)"/>
-        <stop offset="100%" stop-color="rgba(160,110,20,.34)"/>
-      </radialGradient>
-      <clipPath id="disc"><circle cx="100" cy="100" r="92"/></clipPath>
-    </defs>
-    <g clip-path="url(#disc)">
-      <circle cx="100" cy="100" r="92" fill="url(#moonBody)"/>
-      <!-- maria: soft darker seas -->
-      <g fill="#eebf52" filter="url(#soft)">
-        <ellipse cx="74" cy="72" rx="22" ry="17" opacity=".5"/>
-        <ellipse cx="120" cy="94" rx="15" ry="12" opacity=".42"/>
-        <ellipse cx="94" cy="126" rx="14" ry="11" opacity=".4"/>
-        <ellipse cx="136" cy="62" rx="9" ry="8" opacity=".38"/>
-        <ellipse cx="64" cy="114" rx="10" ry="9" opacity=".38"/>
-        <ellipse cx="106" cy="74" rx="7" ry="6" opacity=".3"/>
-      </g>
-      <!-- a few defined craters with light rim -->
-      <g>
-        <circle cx="80" cy="68" r="6" fill="#e3b243" opacity=".5"/>
-        <circle cx="80" cy="68" r="6" fill="none" stroke="#fff2c4" stroke-width="1.1" opacity=".5"/>
-        <circle cx="118" cy="98" r="4.2" fill="#e3b243" opacity=".45"/>
-        <circle cx="118" cy="98" r="4.2" fill="none" stroke="#fff2c4" stroke-width="1" opacity=".45"/>
-        <circle cx="92" cy="128" r="3.4" fill="#e3b243" opacity=".4"/>
-        <circle cx="138" cy="64" r="2.6" fill="#e3b243" opacity=".4"/>
-      </g>
-      <!-- fine grain texture -->
-      <rect x="0" y="0" width="200" height="200" fill="#caa238" filter="url(#grain)" opacity=".14"/>
-      <!-- highlight + limb darkening for roundness -->
-      <ellipse cx="76" cy="64" rx="30" ry="24" fill="#fffbe6" opacity=".3" filter="url(#soft)"/>
-      <circle cx="100" cy="100" r="92" fill="url(#limb)"/>
-    </g>
-  </svg>
-</div>
 <div class="fuji">
   <svg viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
     <defs>
