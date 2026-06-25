@@ -32,7 +32,7 @@
   .sky{position:fixed;inset:0;z-index:-2;
     background:linear-gradient(180deg,#eaf3fb 0%, var(--bg) 55%, #f5efe3 100%);}
   .moon{position:fixed;top:7%;right:11%;width:96px;height:96px;z-index:-2;
-    filter:drop-shadow(0 0 26px rgba(176,200,232,.65))}
+    filter:drop-shadow(0 0 30px rgba(255,210,110,.7))}
   .moon svg{display:block;width:100%;height:auto}
   .fuji{position:fixed;left:0;right:0;bottom:0;z-index:-2;width:100%;opacity:.85}
   .fuji svg{display:block;width:100%;height:auto}
@@ -123,25 +123,23 @@
 <div class="moon">
   <svg viewBox="0 0 200 200" aria-hidden="true">
     <defs>
-      <radialGradient id="moonBody" cx="40%" cy="36%" r="70%">
-        <stop offset="0%" stop-color="#fdfdfb"/>
-        <stop offset="58%" stop-color="#f2f3f0"/>
-        <stop offset="100%" stop-color="#dfe3e3"/>
+      <radialGradient id="moonBody" cx="42%" cy="38%" r="68%">
+        <stop offset="0%" stop-color="#fff6cf"/>
+        <stop offset="55%" stop-color="#ffe49a"/>
+        <stop offset="100%" stop-color="#fbcf5f"/>
       </radialGradient>
       <clipPath id="disc"><circle cx="100" cy="100" r="92"/></clipPath>
     </defs>
     <g clip-path="url(#disc)">
       <circle cx="100" cy="100" r="92" fill="url(#moonBody)"/>
       <!-- minimal stylised craters -->
-      <g fill="#d7dcdc" opacity=".65">
+      <g fill="#f1c35a" opacity=".5">
         <circle cx="76" cy="74" r="15"/>
         <circle cx="122" cy="92" r="10"/>
         <circle cx="92" cy="124" r="8"/>
         <circle cx="134" cy="58" r="5.5"/>
         <circle cx="70" cy="112" r="4.5"/>
       </g>
-      <!-- soft crescent shading for depth -->
-      <circle cx="118" cy="114" r="94" fill="#cfd6d8" opacity=".25"/>
     </g>
   </svg>
 </div>
