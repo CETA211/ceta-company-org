@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CETAcompany | 組織図</title>
+<title>CETA Co. | 組織図</title>
 <style>
   :root{
     --bg:#f3f1ea;          /* 生成り washi */
@@ -36,6 +36,18 @@
   .moon svg{display:block;width:100%;height:auto}
   .fuji{position:fixed;left:0;right:0;bottom:0;z-index:-2;width:100%;opacity:.85}
   .fuji svg{display:block;width:100%;height:auto}
+  /* water surface + moon reflection 水に映る月 */
+  .water{position:fixed;left:0;right:0;bottom:0;height:78px;z-index:-2;
+    background:linear-gradient(180deg, rgba(168,202,234,0) 0%, rgba(160,198,232,.4) 45%, rgba(146,188,226,.6) 100%)}
+  .moon-path{position:fixed;right:calc(11% + 28px);bottom:0;width:40px;height:78px;z-index:-2;
+    background:linear-gradient(180deg, rgba(238,244,251,.45), rgba(238,244,251,0));
+    filter:blur(4px);animation:shimmer 4.5s ease-in-out infinite}
+  @keyframes shimmer{0%,100%{opacity:.35}50%{opacity:.6}}
+  .moon-reflect{position:fixed;right:11%;bottom:0;width:96px;height:78px;z-index:-2;overflow:hidden;opacity:.5;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.85), transparent);
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,.85), transparent)}
+  .moon-reflect svg{display:block;width:96px;height:96px;filter:blur(1.4px);animation:wobble 5s ease-in-out infinite}
+  @keyframes wobble{0%,100%{transform:scaleY(-1) scaleX(1)}50%{transform:scaleY(-1) scaleX(1.05)}}
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
@@ -160,11 +172,21 @@
     <path fill="#fff" opacity=".95" d="M660,130 Q720,82 780,130 L746,158 Q731,146 716,158 Q701,168 689,158 Z"/>
   </svg>
 </div>
+<div class="water"></div>
+<div class="moon-path"></div>
+<div class="moon-reflect">
+  <svg viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="46" fill="#eef4fb"/>
+    <circle cx="38" cy="40" r="7" fill="#d6e2f0" opacity=".7"/>
+    <circle cx="62" cy="58" r="9" fill="#d6e2f0" opacity=".6"/>
+    <circle cx="57" cy="34" r="4" fill="#d6e2f0" opacity=".6"/>
+  </svg>
+</div>
 
 <header class="hero">
   <div class="wrap">
-    <div class="logo"><span class="seal">和</span> CETAcompany</div>
-    <h1>CETAcompany</h1>
+    <div class="logo"><span class="seal">和</span> CETA Co.</div>
+    <h1>CETA Co.</h1>
 
     <div class="crane-wrap">
       <svg viewBox="0 0 120 60" aria-hidden="true">
@@ -260,13 +282,13 @@
 </section>
 
 <footer class="reveal mincho">
-  © 2026 CETAcompany. All rights reserved. · 明鏡止水
+  © 2026 CETA Co. All rights reserved. · 明鏡止水
 </footer>
 
 <div class="toast" id="toast">
   <span class="ic">🌙</span>
   <div>
-    <b>CETAcompany へようこそ</b>
+    <b>CETA Co. へようこそ</b>
     <span>明鏡止水の心をここに。チームをご覧ください。</span>
   </div>
   <button class="close" id="toastClose" aria-label="閉じる">×</button>
