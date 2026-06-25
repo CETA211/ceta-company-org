@@ -31,20 +31,11 @@
   /* ===== Light sky + soft moon + Fuji ===== */
   .sky{position:fixed;inset:0;z-index:-2;
     background:linear-gradient(180deg,#eaf3fb 0%, var(--bg) 55%, #f5efe3 100%);}
-  .moon{position:fixed;top:8%;right:12%;width:84px;height:84px;border-radius:50%;z-index:-2;
-    background:radial-gradient(circle at 40% 40%, #fff 0%, #fdf6e3 60%, #f0e6c8 100%);
-    box-shadow:0 0 36px 8px rgba(247,233,190,.6)}
+  .moon{position:fixed;top:7%;right:11%;width:96px;height:96px;z-index:-2;
+    filter:drop-shadow(0 0 26px rgba(176,200,232,.65))}
+  .moon svg{display:block;width:100%;height:auto}
   .fuji{position:fixed;left:0;right:0;bottom:0;z-index:-2;width:100%;opacity:.85}
   .fuji svg{display:block;width:100%;height:auto}
-
-  /* floating feathers 羽 (no birds) */
-  .feather{position:fixed;top:-30px;z-index:-1;opacity:.5;color:#cdd6e0;
-    animation:fall linear infinite;will-change:transform}
-  @keyframes fall{
-    0%{transform:translateY(-30px) translateX(0) rotate(0);opacity:0}
-    12%{opacity:.6}
-    100%{transform:translateY(110vh) translateX(50px) rotate(200deg);opacity:.15}
-  }
 
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
@@ -141,7 +132,22 @@
 <body>
 
 <div class="sky"></div>
-<div class="moon"></div>
+<div class="moon">
+  <svg viewBox="0 0 100 100" aria-hidden="true">
+    <defs>
+      <radialGradient id="moonG" cx="42%" cy="40%" r="72%">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="55%" stop-color="#eef4fb"/>
+        <stop offset="100%" stop-color="#d4e1f0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="46" fill="url(#moonG)"/>
+    <circle cx="38" cy="40" r="7" fill="#d6e2f0" opacity=".7"/>
+    <circle cx="62" cy="58" r="9" fill="#d6e2f0" opacity=".6"/>
+    <circle cx="57" cy="34" r="4" fill="#d6e2f0" opacity=".6"/>
+    <circle cx="44" cy="65" r="3.5" fill="#d6e2f0" opacity=".55"/>
+  </svg>
+</div>
 <div class="fuji">
   <svg viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
     <defs>
@@ -258,7 +264,7 @@
 </footer>
 
 <div class="toast" id="toast">
-  <span class="ic">🪶</span>
+  <span class="ic">🌙</span>
   <div>
     <b>CETAcompany へようこそ</b>
     <span>明鏡止水の心をここに。チームをご覧ください。</span>
@@ -267,20 +273,6 @@
 </div>
 
 <script>
-  // floating feathers 羽 (feather glyph only)
-  (function(){
-    for(let i=0;i<6;i++){
-      const f=document.createElement('div');
-      f.className='feather';
-      f.textContent='🪶';
-      f.style.left=(10+i*15)+'%';
-      f.style.fontSize=(15+(i%3)*6)+'px';
-      f.style.animationDuration=(16+i*3)+'s';
-      f.style.animationDelay=(-i*5)+'s';
-      document.body.appendChild(f);
-    }
-  })();
-
   // Scroll reveal
   const io=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});
