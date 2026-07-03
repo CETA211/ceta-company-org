@@ -53,6 +53,11 @@
   header.hero .wrap{position:relative;z-index:1}
   .fuji{position:absolute;left:0;right:0;bottom:0;z-index:0;opacity:.85;pointer-events:none}
   .fuji svg{display:block;width:100%;height:clamp(140px,22vw,320px)}
+  /* 月 — pale daytime moon; glows at night */
+  .moon{position:absolute;top:11%;right:9%;width:clamp(60px,8vw,104px);z-index:0;pointer-events:none}
+  .moon svg{display:block;width:100%;height:auto}
+  .moon .m-disc{fill:#fff;opacity:.9}
+  .moon .m-mare{fill:#dfe5ec;opacity:.8}
   #fujiG stop:nth-child(1){stop-color:#9db8d6}
   #fujiG stop:nth-child(2){stop-color:#cdd9e6}
   #fujiG stop:nth-child(3){stop-color:#f3f1ea}
@@ -169,6 +174,9 @@
     #wgF stop:nth-child(1){stop-color:#223047}
     #wgF stop:nth-child(2){stop-color:#12161f}
     .waves .foam{stroke:#aebcd8;opacity:.3}
+    .moon{filter:drop-shadow(0 0 26px rgba(240,232,205,.5))}
+    .moon .m-disc{fill:#f2ecd6;opacity:1}
+    .moon .m-mare{fill:#ddd4b4;opacity:.55}
     .crane-wrap .c-wb{fill:#98a2b8}.crane-wrap .c-wf{fill:#ccd2e0}
     .crane-wrap .c-bd{fill:#ece8dc}.crane-wrap .c-nk{fill:#d6dae6}
     .crane-wrap .c-bk{fill:#ece8dc}.crane-wrap .c-tl{fill:#b6bed0}
@@ -186,6 +194,17 @@
 <div class="sky"></div>
 
 <header class="hero">
+  <div class="moon" aria-hidden="true">
+    <svg viewBox="0 0 100 100">
+      <circle class="m-disc" cx="50" cy="50" r="46"/>
+      <g class="m-mare">
+        <ellipse cx="38" cy="38" rx="13" ry="10"/>
+        <ellipse cx="60" cy="56" rx="10" ry="12"/>
+        <ellipse cx="44" cy="64" rx="7" ry="5.5"/>
+        <ellipse cx="63" cy="33" rx="5.5" ry="5"/>
+      </g>
+    </svg>
+  </div>
   <div class="fuji" aria-hidden="true">
     <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
       <defs>
