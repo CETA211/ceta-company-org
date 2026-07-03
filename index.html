@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CETA Co. | 組織図</title>
 <meta name="description" content="CETA Co. の組織図。鶴翔る 水に映るは 月と影 明鏡止水の 心ここに。">
-<meta name="theme-color" content="#f3f1ea">
+<meta name="theme-color" content="#f3f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12161f" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="CETA Co. | 組織図">
 <meta property="og:description" content="鶴翔る 水に映るは 月と影 明鏡止水の 心ここに。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 96'%3E%3Cpolygon points='46,12 58,56 32,56' fill='%238790a8'/%3E%3Cpolygon points='64,4 80,60 46,58' fill='%233c465e'/%3E%3Cpolygon points='20,66 54,52 90,68 52,84' fill='%23232936'/%3E%3Cpolygon points='20,66 28,60 11,28 5,33' fill='%23333c52'/%3E%3Cpolygon points='11,28 0,24 9,36' fill='%23232936'/%3E%3Cpolygon points='90,68 82,61 112,40' fill='%23465068'/%3E%3C/svg%3E">
@@ -20,6 +21,13 @@
     --sky:#3fb6dd;         /* なちゃ 水色 */
     --green:#3fae74;       /* つる 緑 */
     --gold:#a9823e;        /* 金 accent */
+    --chip:#eef2f8;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#12161f;--paper:#1b2130;--line:#2c3447;--ink:#ece8dc;--muted:#a0a8ba;
+      --blue:#5b8cff;--sky:#4fc0e8;--green:#4fbd85;--gold:#d3ad62;--chip:#242d40;
+    }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -45,6 +53,23 @@
   header.hero .wrap{position:relative;z-index:1}
   .fuji{position:absolute;left:0;right:0;bottom:0;z-index:0;opacity:.85;pointer-events:none}
   .fuji svg{display:block;width:100%;height:clamp(140px,22vw,320px)}
+  #fujiG stop:nth-child(1){stop-color:#9db8d6}
+  #fujiG stop:nth-child(2){stop-color:#cdd9e6}
+  #fujiG stop:nth-child(3){stop-color:#f3f1ea}
+  .fuji .snow{fill:#fff;opacity:.95}
+  /* 北斎風の波 — two drifting layers over the Fuji base */
+  .waves{position:absolute;left:0;right:0;bottom:0;z-index:0;overflow:hidden;pointer-events:none;
+    height:clamp(64px,9vw,120px)}
+  .waves svg{display:block;width:200%;height:100%}
+  .waves .drift-b{animation:driftB 46s linear infinite}
+  .waves .drift-f{animation:driftF 28s linear infinite}
+  @keyframes driftB{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes driftF{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  #wgB stop:nth-child(1){stop-color:#c3d4e5}
+  #wgB stop:nth-child(2){stop-color:#f3f1ea}
+  #wgF stop:nth-child(1){stop-color:#a9c1da}
+  #wgF stop:nth-child(2){stop-color:#f3f1ea}
+  .waves .foam{stroke:#fff;opacity:.55}
   .logo{display:flex;justify-content:center;margin-bottom:22px}
   .logo .seal{width:34px;height:34px;border:1.5px solid var(--gold);border-radius:7px;
     display:flex;align-items:center;justify-content:center;color:var(--gold);
@@ -55,9 +80,16 @@
   .crane-wrap{margin:26px auto 0;width:96px}
   .crane-wrap svg{width:100%;height:auto;animation:soar 6s ease-in-out infinite;
     filter:drop-shadow(0 10px 18px rgba(44,50,66,.18))}
+  .crane-wrap .c-wb{fill:#8790a8}.crane-wrap .c-wf{fill:#3c465e}
+  .crane-wrap .c-bd{fill:#232936}.crane-wrap .c-nk{fill:#333c52}
+  .crane-wrap .c-bk{fill:#232936}.crane-wrap .c-tl{fill:#465068}
   @keyframes soar{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
-  header.hero .haiku{color:var(--ink);font-size:clamp(16px,2.5vw,22px);margin-top:22px;
-    letter-spacing:2px;line-height:2.1}
+  /* 縦書きの短歌 — 散らし書き (portable: one glyph per row) */
+  .tanka{display:flex;flex-direction:row-reverse;justify-content:center;gap:2.4em;
+    margin-top:32px;color:var(--ink);font-size:clamp(15px,2.2vw,20px);line-height:1}
+  .t-col{display:flex;flex-direction:column;align-items:center;gap:.44em}
+  .t-col.offset{margin-top:2.6em}
+  .t-col .sp{height:.72em}
   .badge{display:inline-block;margin-top:28px;padding:8px 20px;border-radius:999px;white-space:nowrap;
     border:1px solid var(--line);color:var(--muted);font-size:12px;letter-spacing:3px;background:var(--paper)}
   @media(max-width:420px){.badge{font-size:10.5px;letter-spacing:2px;padding:7px 14px}}
@@ -106,7 +138,7 @@
   .staff:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(44,50,66,.12)}
   .staff .s-avatar{width:50px;height:50px;border-radius:13px;
     display:flex;align-items:center;justify-content:center;font-size:23px;
-    background:#eef2f8;border:1px solid var(--line);margin-bottom:15px}
+    background:var(--chip);border:1px solid var(--line);margin-bottom:15px}
   .staff h3{font-size:18px;font-weight:700;margin-bottom:8px}
   .staff .tag{display:inline-block;font-size:11px;color:var(--gold);
     border:1px solid var(--line);border-radius:7px;padding:3px 9px;margin-bottom:12px}
@@ -121,7 +153,29 @@
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
   @media(prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
-    .crane-wrap svg,.scroll-hint .arrow::after{animation:none}
+    .crane-wrap svg,.scroll-hint .arrow::after,.waves .drift-b,.waves .drift-f{animation:none}
+  }
+
+  /* ===== Dark mode: night Fuji, moonlit paper crane ===== */
+  @media (prefers-color-scheme:dark){
+    .sky{background:linear-gradient(180deg,#0e1420 0%,var(--bg) 55%,#141926 100%)}
+    .ceo{--ct:var(--blue)}.first-lady{--ct:var(--sky)}.cco{--ct:var(--green)}
+    #fujiG stop:nth-child(1){stop-color:#31405c}
+    #fujiG stop:nth-child(2){stop-color:#25304a}
+    #fujiG stop:nth-child(3){stop-color:#12161f}
+    .fuji .snow{fill:#d9e2f2;opacity:.85}
+    #wgB stop:nth-child(1){stop-color:#2b3950}
+    #wgB stop:nth-child(2){stop-color:#12161f}
+    #wgF stop:nth-child(1){stop-color:#223047}
+    #wgF stop:nth-child(2){stop-color:#12161f}
+    .waves .foam{stroke:#aebcd8;opacity:.3}
+    .crane-wrap .c-wb{fill:#98a2b8}.crane-wrap .c-wf{fill:#ccd2e0}
+    .crane-wrap .c-bd{fill:#ece8dc}.crane-wrap .c-nk{fill:#d6dae6}
+    .crane-wrap .c-bk{fill:#ece8dc}.crane-wrap .c-tl{fill:#b6bed0}
+    .crane-wrap svg{filter:drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+    .node,.staff{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .node:hover{box-shadow:0 20px 44px rgba(0,0,0,.5)}
+    .staff:hover{box-shadow:0 16px 36px rgba(0,0,0,.45)}
   }
 
   @media(max-width:640px){.node{width:100%;max-width:330px}.row{gap:16px}}
@@ -142,7 +196,26 @@
         </linearGradient>
       </defs>
       <path fill="url(#fujiG)" d="M0,320 L0,255 L520,255 L660,130 Q720,82 780,130 L920,255 L1440,255 L1440,320 Z"/>
-      <path fill="#fff" opacity=".95" d="M660,130 Q720,82 780,130 L746,158 Q731,146 716,158 Q701,168 689,158 Z"/>
+      <path class="snow" d="M660,130 Q720,82 780,130 L746,158 Q731,146 716,158 Q701,168 689,158 Z"/>
+    </svg>
+  </div>
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 2880 120" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="wgB" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"/><stop offset="100%"/>
+        </linearGradient>
+        <linearGradient id="wgF" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"/><stop offset="100%"/>
+        </linearGradient>
+      </defs>
+      <g class="drift-b">
+        <path fill="url(#wgB)" d="M0,58 C120,30 250,78 380,54 C510,32 620,80 760,56 C900,34 1010,78 1150,54 C1280,34 1360,66 1440,58 C1560,30 1690,78 1820,54 C1950,32 2060,80 2200,56 C2340,34 2450,78 2590,54 C2720,34 2800,66 2880,58 L2880,120 L0,120 Z"/>
+      </g>
+      <g class="drift-f">
+        <path fill="url(#wgF)" d="M0,84 C160,58 300,102 460,80 C620,60 740,104 900,82 C1060,62 1180,100 1320,82 C1380,76 1420,80 1440,84 C1600,58 1740,102 1900,80 C2060,60 2180,104 2340,82 C2500,62 2620,100 2760,82 C2820,76 2860,80 2880,84 L2880,120 L0,120 Z"/>
+        <path class="foam" fill="none" stroke-width="2.5" d="M0,84 C160,58 300,102 460,80 C620,60 740,104 900,82 C1060,62 1180,100 1320,82 C1380,76 1420,80 1440,84 C1600,58 1740,102 1900,80 C2060,60 2180,104 2340,82 C2500,62 2620,100 2760,82 C2820,76 2860,80 2880,84"/>
+      </g>
     </svg>
   </div>
   <div class="wrap">
@@ -151,16 +224,19 @@
 
     <div class="crane-wrap">
       <svg viewBox="0 0 120 96" aria-hidden="true">
-        <polygon points="46,12 58,56 32,56" fill="#8790a8"/>
-        <polygon points="64,4 80,60 46,58" fill="#3c465e"/>
-        <polygon points="20,66 54,52 90,68 52,84" fill="#232936"/>
-        <polygon points="20,66 28,60 11,28 5,33" fill="#333c52"/>
-        <polygon points="11,28 0,24 9,36" fill="#232936"/>
-        <polygon points="90,68 82,61 112,40" fill="#465068"/>
+        <polygon class="c-wb" points="46,12 58,56 32,56"/>
+        <polygon class="c-wf" points="64,4 80,60 46,58"/>
+        <polygon class="c-bd" points="20,66 54,52 90,68 52,84"/>
+        <polygon class="c-nk" points="20,66 28,60 11,28 5,33"/>
+        <polygon class="c-bk" points="11,28 0,24 9,36"/>
+        <polygon class="c-tl" points="90,68 82,61 112,40"/>
       </svg>
     </div>
 
-    <p class="haiku mincho">鶴翔る　水に映るは　月と影<br>明鏡止水の　心ここに</p>
+    <div class="tanka mincho" aria-label="鶴翔る 水に映るは 月と影 明鏡止水の 心ここに">
+      <div class="t-col" aria-hidden="true"><span>鶴</span><span>翔</span><span>る</span><span class="sp"></span><span>水</span><span>に</span><span>映</span><span>る</span><span>は</span><span class="sp"></span><span>月</span><span>と</span><span>影</span></div>
+      <div class="t-col offset" aria-hidden="true"><span>明</span><span>鏡</span><span>止</span><span>水</span><span>の</span><span class="sp"></span><span>心</span><span>こ</span><span>こ</span><span>に</span></div>
+    </div>
     <span class="badge">ORGANIZATION CHART · 2026</span>
     <div class="scroll-hint"><span>SCROLL</span><span class="arrow"></span></div>
   </div>
